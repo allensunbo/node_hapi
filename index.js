@@ -10,12 +10,29 @@ server.connection({
 
 server.route({
 	method: 'GET',
+	path: '/users',
+	handler: function(request, reply) {
+		var users = userService.allUsers();
+		var result = [];
+		for (var p in users) {
+			result.push({
+				'name': users[p].name,
+				'email': users[p].email
+			});
+		}
+		reply(result);
+	}
+});
+
+server.route({
+	method: 'GET',
 	path: '/{name}',
 	handler: function(request, reply) {
 		console.log(userService.allUsers());
 		reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
 	}
 });
+
 
 // Start the server
 server.start();
