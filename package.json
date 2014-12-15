@@ -1,0 +1,22 @@
+{
+  "name": "node_hapi",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "hapi": "^8.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allensunbo/node_hapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allensunbo/node_hapi/issues"
+  },
+  "homepage": "https://github.com/allensunbo/node_hapi"
+}
