@@ -6,14 +6,14 @@
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-	<div ng-app="app" ng-controller="MainCtrl">
-		<input ng-model="number1"></input>
+	<div ng-app="app" ng-controller="MainCtrl as main">
+		<input ng-model="main.number1"></input>
 		<div>
-			<user-list number="number1"></user-list>
+			<user-list number="main.number1"></user-list>
 		</div>
-		<input ng-model="number2"></input>
+		<input ng-model="main.number2"></input>
 		<div>
-			<user-list number="number2"></user-list>
+			<user-list number="main.number2"></user-list>
 		</div>
 	</div>
 </body>
