@@ -7,7 +7,14 @@
 </head>
 <body>
 	<div ng-app="app" ng-controller="MainCtrl">
-		<user-list></user-list>
+		<input ng-model="number1"></input>
+		<div>
+			<user-list number="number1"></user-list>
+		</div>
+		<input ng-model="number2"></input>
+		<div>
+			<user-list number="number2"></user-list>
+		</div>
 	</div>
 </body>
 </html>
