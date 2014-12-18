@@ -1,7 +1,14 @@
+<style type="text/css">
+.top {
+    color: red;
+    font-weight: bold;
+}	
+</style>
+
 <button ng-click="load()">Load Users</button>
 <form><ul ng-repeat="user in users">
     <li>
-        <input type="text" ng-model="user.name" />
+        <input type="text" ng-model="user.name" ng-class="{top: topUser==user}"/>
         <!-- ng-repeat create a child scope, so you have to bind to the $parent:  -->
         <!-- http://stackoverflow.com/questions/14775981/angularjs-using-ng-repeat-to-create-sets-of-radio-inputs -->
         <input type="radio" ng-model="$parent.topUser" ng-value="user" ng-change="setTopUser(topUser)">

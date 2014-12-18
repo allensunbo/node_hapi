@@ -32,7 +32,7 @@
 		}
 	});
 
-	app.directive('userList', function(UserService, $log) {
+	app.directive('userList', function($log) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -40,35 +40,38 @@
 			},
 			templateUrl: 'user-list.html',
 			link: function(scope, element, attributes, controller) {
-				scope.load = function() {
-					UserService.getAllUsers().then(function(data) {
-						// you can also avoid the above issue here
-						/*var usersClone = [];
-						angular.copy(data.slice(0, scope.number), usersClone);
-						scope.users = usersClone;*/
-
-						scope.users = data.slice(0, scope.number);
-					}, function(reason) {
-						$log.error(reason);
-					});
-				};
+				scope.load = controller.load;
 				scope.topUser = undefined;
 				scope.setTopUser = function(user) {
-					scope.topUser = user;
 					controller.setTopUser(user);
-					console.log(controller.getTopUser());
+					$log.info(controller.getTopUser());
 				};
 			},
-			controller: function($scope) {
-				var topUser = null;
-				this.getTopUser = function() {
-					return topUser;
-				}
-
-				this.setTopUser = function(user) {
-					topUser = user;
-				}
-			}
+			controller: UserListController
 		}
 	});
+
+	function UserListController($scope, UserService) {
+		this.getTopUser = function() {
+			return $scope.topUser;
+		}
+
+		this.setTopUser = function(user) {
+			$scope.topUser = user;
+		}
+
+		this.load = function() {
+			UserService.getAllUsers().then(function(data) {
+				// you can also avoid the above issue here
+				/*var usersClone = [];
+				angular.copy(data.slice(0, scope.number), usersClone);
+				scope.users = usersClone;*/
+
+				$scope.users = data.slice(0, $scope.number);
+			}, function(reason) {
+				$log.error(reason);
+			});
+		};
+	}
+
 })(angular);
