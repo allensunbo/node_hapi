@@ -46,6 +46,9 @@
 					controller.setTopUser(user);
 					$log.info(controller.getTopUser());
 				};
+				scope.mystyle= attributes['mystyle'];
+				$log.info(scope.mystyle);
+
 			},
 			controller: UserListController
 		}
