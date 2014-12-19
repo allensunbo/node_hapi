@@ -43,4 +43,26 @@ describe("Cow", function() {
             assert.equal(greetings, "Kate greets Baby");
         });
     });
+
+    describe("#run", function() {
+        it("should show speed", function() {
+            var run = (new Cow("Kate")).run()('5mph');
+            assert.equal(run, "run@5mph");
+        });
+    });
+
+    describe("#lateGreets", function() {
+        it("should pass an error if no target is passed", function(done) {
+            assert.throws((new Cow()).lateGreets(null, function(err, greetings) {
+                done();
+            }), Error);
+        });
+
+        it("should greet passed target after one second", function(done) {
+            new Cow("Kate").lateGreets("Baby", function(err, greetings) {
+                assert.equal(greetings, "Kate greets Baby");
+                done();
+            });
+        });
+    });
 });
