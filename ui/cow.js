@@ -17,12 +17,30 @@ Cow.prototype = {
         }
     },
     lateGreets: function(target, cb) {
-        setTimeout(function(self) {
+        setTimeout(function(self, msg) {
+            console.log(msg);
             try {
                 cb(null, self.greets(target));
             } catch (err) {
                 cb(err);
             }
-        }, 1000, this);
+        }, 1000, this, 'hello, world'); // use this form to pass additinal parameter
+    },
+    sing: function(song) {
+        return 'I am singing:' + song.name;
+    },
+    sing2: function(song) {
+        return new Song(song);
     }
 };
+
+
+function Song(name) {
+    this.name = name;
+}
+
+Song.prototype.getName = function() {
+    return 'song name:' + this.name;
+};
+
+exports.Song = Song;

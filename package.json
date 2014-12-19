@@ -6,7 +6,8 @@
   "devDependencies": {
     "hapi": "^8.0.0",
     "nodemon": "^1.2.1",
-    "Faker": "^0.7.2"
+    "Faker": "^0.7.2",
+    "sinon": "~1.12.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
